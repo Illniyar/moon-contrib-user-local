@@ -20,14 +20,19 @@ User.methods.verifyPassword =function(toVerify){
 	return passwordHash.verify(settings.USER_LOCAL_SECRET_TOKEN + toVerify,this.password);
 }
 User.statics.findByUsernameAndPassword = function(username,password,cb) {
-	this.findOne({username:username}).select("+password").exec(function(err,user){
+    var self = this;
+    self.findOne({username:username}).select("+password").exec(function(err,user){
 		try {
 			if (err) return cb(err);
 			if (!user) return cb(null,false,{ message: 'Incorrect username.' });
 			if (!user.verifyPassword(password)) return cb(null,false,{ message: 'Incorrect password.' });
-			var uObj = user.toObject();
-			uObj.password = undefined;
-			cb(null,uObj)
+
+            //we reload so that password won't be populated.
+            //there is no way at the moment to "unmark" a populated field
+            self.findById(user.id,function(err,user){
+                if (err) return cb(err);
+                cb(null,user)
+            })
 		} catch(err){
 			cb(err)
 		}

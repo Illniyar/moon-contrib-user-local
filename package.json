@@ -1,6 +1,6 @@
 {
   "name": "moon-contrib-user-local",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Illniyar",
   "description": "local authentication strategy for moon-contrib-user",
   "repository": {

@@ -3,6 +3,6 @@ var moonshine = require("moonshine-js"),
 
 var resource = api.resources.User;
 
-resource.post("/login/local/",require("passport").authenticate('local'),function(req,res){
+resource.post("/login/local/",moonshine.user.auth.authenticate('local'),function(req,res){
     res.json(req.user)
 })
