@@ -7,3 +7,6 @@ module.exports.config = function(settings) {
 	settings.USER_LOCAL_SECRET_TOKEN = "changeMe"
     settings.USER_LOCAL_MINIMUM_PASSWORD_LENGTH=8
 }
+module.exports.requiredComponents = [
+	"moon-contrib-user"
+]

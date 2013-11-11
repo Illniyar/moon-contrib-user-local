@@ -1,12 +1,12 @@
 var moonshine = require("moonshine-js"),
-	Schema = moonshine.persistence.Schema,
+	Schema = moonshine.db.Schema,
     settings = moonshine.settings,
     passport = require("passport")
 
 var passwordHash = require('password-hash');
 var LocalStrategy = require('passport-local').Strategy;
 
-var User = moonshine.persistence.getSchema("User")
+var User = moonshine.db.getSchema("User")
 var options = {
 	algorithm:settings.USER_LOCAL_ALGORITHM,
 	saltLength:settings.USER_LOCAL_SALTLENGTH,
@@ -39,5 +39,5 @@ User.statics.findByUsernameAndPassword = function(username,password,cb) {
 	});
 }
 passport.use(new LocalStrategy(function(username,password,done){
-	moonshine.persistence.models.User.findByUsernameAndPassword(username,password,done);
+	moonshine.db.models.User.findByUsernameAndPassword(username,password,done);
 }))
