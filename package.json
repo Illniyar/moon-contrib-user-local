@@ -1,6 +1,6 @@
 {
   "name": "moon-contrib-user-local",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Illniyar",
   "description": "local authentication strategy for moon-contrib-user",
   "repository": {
@@ -18,7 +18,7 @@
     "optimist":"~0.6.0"
   },
   "peerDependencies": {
-    "moonshine-js":"~0.0.5",
-    "moon-contrib-user":"~0.0.3"
+    "moonshine-js":"0.0.6",
+    "moon-contrib-user":"0.0.4"
   }
 }
